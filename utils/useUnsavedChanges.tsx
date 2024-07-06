@@ -9,9 +9,8 @@ const useUnsavedChanges = (unsavedChanges: boolean) => {
       if (unsavedChanges) {
         const confirmationMessage =
           'You didn’t save your work yet! Are you sure you want to close the page without saving?';
-        const confirmation = confirm(confirmationMessage);
+        const confirmation = window.confirm(confirmationMessage);
         if (!confirmation) {
-          router.refresh();
           throw 'Route change aborted';
         }
       }
