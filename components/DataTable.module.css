@@ -8,7 +8,9 @@
   border: 1px solid #ddd;
   padding: 16px; 
 }
-
+.todo-text {
+  min-width:700px;
+}
 .table th {
   background-color: #f2f2f2;
   text-align: left;
