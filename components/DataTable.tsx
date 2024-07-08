@@ -22,7 +22,7 @@ const DataTable: React.FC = () => {
   const handleDelete = async (id: number) => {
     try {
       if (id < 7) {
-        // Assuming existing todos have IDs less than 7
+   
         await axios.delete(`https://dummyjson.com/todos/${id}`);
       }
       deleteTodo(id);
