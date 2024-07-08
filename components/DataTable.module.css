@@ -52,9 +52,10 @@
 .table td {
   border: 1px solid #ddd;
   padding: 8px;
-  max-width: 700px; /* Set a max width for the table cells */
-  word-wrap: break-word; /* Ensure long text wraps to a new line */
-  white-space: pre-wrap; /* Preserve whitespace and wrap text */
+  max-width: 700px;
+  min-width: 700px;
+  word-wrap: break-word; 
+  white-space: pre-wrap; 
 }
 
 .table th {
