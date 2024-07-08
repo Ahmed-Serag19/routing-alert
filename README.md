@@ -8,7 +8,7 @@ This is a simple Todo Management Application built with Next.js, React, and Type
 - Edit existing todos
 - Delete todos
 - Validate input fields
-- Handle unsaved changes
+- Handle unsaved changes in the inputs before changing the route, if you tried to edit a todo
 - Fixed-size todo table with text wrapping
 
 ## Technologies Used
