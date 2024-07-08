@@ -43,3 +43,42 @@
 .cancelButton:hover {
   background-color: #5a6268;
 }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  max-width: 700px; /* Set a max width for the table cells */
+  word-wrap: break-word; /* Ensure long text wraps to a new line */
+  white-space: pre-wrap; /* Preserve whitespace and wrap text */
+}
+
+.table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.flex {
+  display: flex;
+}
+
+.gap6 {
+  gap: 6px;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}

@@ -1,43 +1,50 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import { TodoContext } from '../context/TodoContext';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
 import styles from './DataTable.module.css';
 
-interface Todo {
-  id: number;
-  todo: string;
-  userId: string;
-}
+const DataTable: React.FC = () => {
+  const todoContext = useContext(TodoContext);
 
-const DataTable = () => {
-  const [data, setData] = useState<Todo[]>([]);
-  const [loading, setLoading] = useState(true);
+  if (!todoContext) {
+    throw new Error('DataTable must be used within a TodoProvider');
+  }
+
+  const { todos, loading, deleteTodo } = todoContext;
   const router = useRouter();
-
-  const fetchData = async () => {
-    const result = await axios.get('https://dummyjson.com/todos');
-    setData(result.data.todos.slice(0, 6));
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleEdit = (id: number) => {
     router.push(`/edit/${id}`);
   };
 
   const handleDelete = async (id: number) => {
-    await axios.delete(`https://dummyjson.com/todos/${id}`);
-    setData(data.filter((item) => item.id !== id));
+    try {
+      if (id < 7) {
+        // Assuming existing todos have IDs less than 7
+        await axios.delete(`https://dummyjson.com/todos/${id}`);
+      }
+      deleteTodo(id);
+    } catch (error) {
+      console.error('Error deleting todo:', error);
+    }
+  };
+
+  const handleAdd = () => {
+    router.push('/add');
   };
 
   return loading ? (
     <p>Loading...</p>
   ) : (
     <div>
+      <button
+        onClick={handleAdd}
+        className="bg-green-500 text-white p-2 rounded mb-4"
+      >
+        Add Todo
+      </button>
       <table className={styles.table}>
         <thead className="text-black">
           <tr>
@@ -47,7 +54,7 @@ const DataTable = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {todos.map((item) => (
             <tr key={item.id}>
               <td>{item.todo}</td>
               <td>{item.userId}</td>
