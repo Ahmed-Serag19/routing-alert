@@ -56,7 +56,7 @@ const DataTable: React.FC = () => {
         <tbody>
           {todos.map((item) => (
             <tr key={item.id}>
-              <td class="todo-text">{item.todo}</td>
+              <td className="todo-text">{item.todo}</td>
               <td>{item.userId}</td>
               <td>
                 <div className={`${styles.flex} ${styles.gap6}`}>
